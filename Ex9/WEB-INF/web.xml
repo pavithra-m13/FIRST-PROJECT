@@ -1,0 +1,42 @@
+
+<web-app>
+    <servlet>
+        <servlet-name>sample</servlet-name>
+        <servlet-class>profile</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>sample</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>session</servlet-name>
+        <servlet-class>session</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>session</servlet-name>
+        <url-pattern>/session</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>session1</servlet-name>
+        <servlet-class>session1</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>session1</servlet-name>
+        <url-pattern>/session1</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>cookie1</servlet-name>
+        <servlet-class>cookie1</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>cookie1</servlet-name>
+        <url-pattern>/cookie1</url-pattern>
+    </servlet-mapping>
+</web-app>

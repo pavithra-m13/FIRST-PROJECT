@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews</title>
+    <style>
+        body {
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color:rgb(97, 216, 97);
+            margin: 0;
+            padding: 0;
+        }
+
+        .reviews-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .review-row {
+            display: flex;
+            justify-content: space-between; 
+        }
+
+        .review {
+            width: 48%; 
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start; 
+            transition: all 0.3s; 
+        }
+
+        .review:hover {
+            transform: scale(1.1); /* Add a slight zoom effect on hover */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Add a shadow on hover */
+        }
+
+        .review-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20px;
+        }
+
+        .review-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .review-content {
+            flex: 1; /* Allow the content to expand */
+        }
+
+        .review h3 {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .review p {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+        }
+
+        .rating span {
+            color: #ffcc00; /* Yellow star color */
+            font-size: 20px;
+            margin-right: 5px;
+        }
+
+        .like-button {
+            background-color: #45a049;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s; /* Add transitions for button */
+        }
+
+        .like-button:hover {
+            background-color: #357b38;
+            transform: scale(1.2); /* Add a slight zoom effect on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="reviews-container">
+        <div class="review-row">
+        <div class="review">
+            <div class="review-image">
+                <img src="customer1.jpg" alt="Customer 1">
+            </div>
+            <div class="review-content">
+                <h3>L Evvans</h3>
+                <div class="rating">
+                    <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9734;</span><span>&#9734;</span>
+                </div>
+                <p>Started ordering from here during lockdown and I'll never go back to supermarket fruit and veg again. So easy to order, always delivered when scheduled, stays fresh for ages and so much flavour</p>
+                <button class="like-button">Like</button>
+            </div>
+        </div>
+
+        <div class="review">
+            <div class="review-image">
+                <img src="customer2.jpg" alt="Customer 2">
+            </div>
+            <div class="review-content">
+                <h3>Coolair Warmsun</h3>
+                <div class="rating">
+                    <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9734;</span>
+                </div>
+                <p>The quality of all the items enclosed is fantastic; so fresh and hardly any plastic in sight!</p>
+                <button class="like-button">Like</button>
+            </div>
+        </div>
+        <div class="review">
+            <div class="review-image">
+                <img src="customer3.jpg" alt="Customer 2">
+            </div>
+            <div class="review-content">
+                <h3>L Richards</h3>
+                <div class="rating">
+                    <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9734;</span>
+                </div>
+                <p>The staff are knowledgeable, cheerful and kind, and the delivery service is exceptional.</p>
+                <button class="like-button">Like</button>
+            </div>
+        </div>
+    </div>
+   </div>
+</body>
+</html>

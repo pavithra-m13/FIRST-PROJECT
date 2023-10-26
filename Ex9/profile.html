@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <style>
+       
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow:visible;
+        }
+
+        .container {
+            max-width: 70%;
+            margin-top: 3px;
+            margin: 0 auto;
+            padding: 5px;
+            border-radius: 5px;
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .form-group {
+            /* margin-bottom: 10px; */
+            width: 90%;
+            padding: 5px;
+            margin-top: 3px;
+            height: 100%;
+            border: 1px solid rgb(71, 201, 71);
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        img {
+            max-width: 60px;
+            height: auto;
+        }
+
+        /* Style the email clickable area */
+        area {
+            cursor: pointer;
+            background-color: #f2f2f2;
+        }
+
+        #emailInput {
+            display: none; /* Initially hidden */
+            width: 60%;
+            padding: 5px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="text"], input[type="password"], input[type='email'] {
+            width: 60%; /* Adjust the width as needed */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        input[type="tel"] {
+            width: 60%; /* Adjust the width as needed */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+
+        #file-error {
+            color: red;
+        }
+
+        /* Add styling for the password input */
+        input[type="password"] {
+            width: 60%; /* Adjust the width as needed */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Register</h1>
+           <script>
+   document.addEventListener("DOMContentLoaded", function () {
+            const profileForm = document.getElementById('profile-form');
+
+            profileForm.addEventListener("submit", function (event) {
+                let flag = 1;
+
+                // Validation functions
+                function validateName() {
+                    const nameInput = document.getElementById('name');
+                    const nameError = document.getElementById('name-error');
+                    if (nameInput.value.trim() === '') {
+                        flag = 0;
+                        nameError.textContent = 'Name is required';
+                        event.preventDefault();
+
+                    } else {
+                        nameError.textContent = '';
+                    }
+                }
+
+                function validateEmail() {
+                    const emailInput = document.getElementById('emailaddress');
+                    const emailError = document.getElementById('email-error');
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(emailInput.value) || emailInput.value.trim() === "") {
+                        flag = 0;
+                        emailError.textContent = 'Invalid email format';
+                        event.preventDefault();
+
+                    } else {
+                        emailError.textContent = '';
+                    }
+                }
+
+                function validatePassword() {
+                    const passwordInput = document.getElementById('password');
+                    const passwordError = document.getElementById('password-error');
+                    if (passwordInput.value.length < 8 || passwordInput.value.trim() === "") {
+                        flag = 0;
+                        passwordError.textContent = 'Password must be at least 8 characters';
+                        event.preventDefault();
+
+                    } else {
+                        passwordError.textContent = '';
+                    }
+                }
+
+                function validateContact() {
+                    const contactInput = document.getElementById('contact');
+                    const contactError = document.getElementById('contact-error');
+                    // You can add more specific contact number validation here
+                    if (contactInput.value.trim() === '') {
+                        flag = 0;
+                        contactError.textContent = 'Contact number is required';
+                        event.preventDefault();
+
+                    } else {
+                        contactError.textContent = '';
+                    }
+                }
+
+                function validateGender() {
+                    const genderInput = document.getElementById('gender');
+                    const genderError = document.getElementById('gender-error');
+                    if (genderInput.value.trim() === '') {
+                        flag = 0;
+                        genderError.textContent = 'Gender is required';
+                        event.preventDefault();
+
+                    } else {
+                        genderError.textContent = '';
+                    }
+                }
+
+                function validateDateOfBirth() {
+                    const dobInput = document.getElementById('dob');
+                    const dobError = document.getElementById('dob-error');
+                    if (dobInput.value.trim() === '') {
+                        flag = 0;
+                        dobError.textContent = 'Date of Birth is required';
+                        event.preventDefault();
+
+                    } else {
+                        dobError.textContent = '';
+                    }
+                }
+
+                function validateFile() {
+                    const fileInput = document.getElementById("photo");
+                    const fileError = document.getElementById("file-error");
+
+                    if (!fileInput.files.length) {
+                        flag = 0;
+                        fileError.textContent = "Please select a file to upload.";
+                    } else {
+                        const uploadedFile = fileInput.files[0];
+                        const allowedFormats = ["image/jpeg", "image/png", "image/gif"];
+                        const maxSize = 5 * 1024 * 1024; // 5MB maximum file size
+
+                        if (!allowedFormats.includes(uploadedFile.type)) {
+                            flag = 0;
+                            fileError.textContent = "Invalid file format. Please upload a JPG, PNG, or GIF file.";
+                        } else if (uploadedFile.size > maxSize) {
+                            flag = 0;
+                            fileError.textContent = "File size exceeds the maximum allowed (5MB).";
+                        } else {
+                            fileError.textContent = "Successfully File uploaded";
+                        }
+                    }
+                }
+                validateName();
+                validateEmail();
+                validatePassword();
+                validateContact();
+                validateGender();
+                validateDateOfBirth();
+                validateFile();
+                if (flag === 0) {
+                    event.preventDefault(); 
+                } else {
+                    alert("Profile updated successfully!");
+                    profileForm.reset();
+                }
+            });
+        });
+
+        </script>
+        <form id="profile-form" action="register" method="POST" >
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="username" autocomplete="off"/>
+            </div>
+            <div class="form-group">
+                <label for="emailaddress">Click to Enter your email address:</label>
+                <br>
+                <img src="mailbox.png" alt="Click to Enter Email" usemap="#emailMap">
+                <map name="emailMap">
+                    <area shape="rect" coords="2,2,127,127" alt="Click to Enter Email" onclick="showEmailInput()">
+                </map>
+                <input type="email" id="emailaddress" name="emailaddress" autocomplete="off" placeholder="Enter your email address" />
+            </div> 
+             <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" autocomplete="off"/>
+            </div>
+            <div class="form-group">
+                <label for="contact">Contact Number:</label>
+                <input type="tel" id="contact" name="contactnumber" autocomplete="off"/>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" />
+            </div>
+
+            <div class="form-group">
+                <div class="file-upload-container">
+                    <label for="photo">Select a photo:</label>
+                    <input type="file" id="photo" name="photo" accept="image/*">
+                    <span id="file-error" style="color: red;"></span>
+                    <button id="upload-button" >Upload</button>
+                </div>
+            </div>
+
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</body>
+</html>

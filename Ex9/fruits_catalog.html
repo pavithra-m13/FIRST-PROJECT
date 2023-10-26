@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruits Catalog</title>
+    <style>
+
+        body {
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            color:green;
+            transition: color 0.3s ease;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .fruit {
+            display:inline-block;
+            width: 30%;
+            height: 30%;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f2f2f2;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-align: center;
+        }
+
+        .fruit:hover {
+            background-color: #ddd;
+            transform: scale(1.05);
+        }
+
+        .fruit img {
+            width: 70px;
+            height: 70px;
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .fruit:hover img {
+            transform: scale(1.1);
+        }
+
+        .fruit-details {
+            flex: 1;
+        }
+
+        .search-form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            width: 60%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007bff;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fruits Catalog</h1>
+
+        <div class="fruit">
+            <img src="apple.jpg" alt="Apple">
+            <div class="fruit-details">
+                <h2>Apple</h2>
+                <p>Apples are delicious and nutritious fruits...</p>
+            </div>
+        </div>
+
+        <div class="fruit">
+            <img src="orange.jpg" alt="Orange">
+            <div class="fruit-details">
+                <h2>Orange</h2>
+                <p>Oranges are known for their vitamin C content...</p>
+            </div>
+        </div>
+
+        <div class="fruit">
+            <img src="banana.jpg" alt="Banana">
+            <div class="fruit-details">
+                <h2>Banana</h2>
+                <p>Bananas are known for their vitamin C, and vitamin B6.</p>
+            </div>
+        </div>
+        
+        <div class="search-form">
+            <form id="searchForm">
+                <input type="text" id="searchInput" placeholder="Search for a fruit...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+        <div id="searchResults">
+       
+        </div>
+    </div>
+
+    <script>
+        const fruits = [
+            { name: "Apple", description: "Apples are delicious and nutritious fruits..." },
+            { name: "Orange", description: "Oranges are known for their vitamin C content..." },
+            { name: "Banana", description: "Bananas are known for their vitamin C, and vitamin B6." },
+        ];
+
+        const searchForm = document.getElementById("searchForm");
+        const searchInput = document.getElementById("searchInput");
+        const searchResults = document.getElementById("searchResults");
+
+        searchForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const searchTerm = searchInput.value.toLowerCase();
+            const results = fruits.filter(fruit => fruit.name.toLowerCase().includes(searchTerm));
+
+            displaySearchResults(results);
+        });
+
+        function displaySearchResults(results) {
+            searchResults.innerHTML = "";
+
+            if (results.length === 0) {
+                searchResults.innerHTML = "<p>No results found.</p>";
+                return;
+            }
+
+            results.forEach(result => {
+                const resultElement = document.createElement("div");
+                resultElement.classList.add("fruit");
+                resultElement.innerHTML = `
+                    <img src="${result.name.toLowerCase()}.jpg" alt="${result.name}">
+                    <div class="fruit-details">
+                        <h2>${result.name}</h2>
+                        <p>${result.description}</p>
+                    </div>
+                `;
+                searchResults.appendChild(resultElement);
+            });
+        }
+    </script>
+</body>
+</html>

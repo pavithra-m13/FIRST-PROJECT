@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Fruits Store</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table.container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr {
+            background-color: #f2f2f2;
+        }
+
+        .product img {
+            width: 70px;
+            height: 70px;
+            transition: transform 0.3s;
+        }
+
+        /* Add a scale effect on hover */
+        .product:hover img {
+            transform: scale(1.1);
+           
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+
+        }
+
+        #cart {
+            margin-top: 20px;
+            width:300px;
+            height:100%;
+        }
+
+        #error-message {
+            color: red;
+        }
+
+        /* Add a transition for cart item addition */
+        .cart-item {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .cart-item.added {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        h2 {
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <table class="container">
+        <tr>
+            <th>Image</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Action</th>
+        </tr>
+        <tr class="product">
+            <td><img src="apple.jpg" alt="Apple"></td>
+            <td><i><strong>Apple</strong></i></td>
+            <td>
+                <select id="apple-quantity">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </td>
+            <td><button onclick="addToCart('Apple', 'apple-quantity')">Add to Cart</button></td>
+        </tr>
+        <tr class="product">
+            <td><img src="orange.jpg" alt="Orange"></td>
+            <td><i><strong>Orange</strong></i></td>
+            <td>
+                <select id="orange-quantity">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </td>
+            <td><button onclick="addToCart('Orange', 'orange-quantity')">Add to Cart</button></td>
+        </tr>
+        <tr class="product">
+            <td><img src="pineapple.webp" alt="PineApple"></td>
+            <td><i><strong>PineApple</strong></i></td>
+            <td>
+                <select id="pineapple-quantity">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </td>
+            <td><button onclick="addToCart('PineApple', 'pineapple-quantity')">Add to Cart</button></td>
+        </tr><tr class="product">
+            <td><img src="banana.jpg" alt="Banana"></td>
+            <td><i><strong>Banana</strong></i></td>
+            <td>
+                <select id="banana-quantity">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </td>
+            <td><button onclick="addToCart('Banana', 'banana-quantity')">Add to Cart</button></td>
+        </tr>
+    </table>
+
+    <div id="cart" class="container">
+        <button id="Shopping">Shopping Cart</button>
+        <ul id="cart-items">
+        </ul>
+    </div>
+    <p id="error-message" class="container"></p>
+
+    <script>
+        const cartItems = {};
+
+        function addToCart(productName, quantityId) {
+            const quantitySelect = document.getElementById(quantityId);
+            const selectedQuantity = parseInt(quantitySelect.value);
+
+            if (selectedQuantity > 0) {
+                if (cartItems[productName]) {
+                    cartItems[productName] += selectedQuantity;
+                } else {
+                    cartItems[productName] = selectedQuantity;
+                }
+
+                // Update the cart display
+                updateCartDisplay();
+
+                // Reset the quantity select to 0
+                quantitySelect.value = "0";
+                document.getElementById("error-message").textContent = "";
+            } else {
+                document.getElementById("error-message").textContent = "Please select a quantity.";
+            }
+        }
+
+        function updateCartDisplay() {
+            const cartItemsList = document.getElementById("cart-items");
+            cartItemsList.innerHTML = "";
+
+            for (const product in cartItems) {
+                const listItem = document.createElement("li");
+                listItem.textContent = `${product}: ${cartItems[product]} ${cartItems[product] > 1 ? "items" : "item"}`;
+                listItem.className = "cart-item added";
+                setTimeout(() => {
+                    listItem.className = "cart-item";
+                }, 2000);
+                cartItemsList.appendChild(listItem);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<style>
+   nav {
+  background-color: #45a049;
+  display: flex;
+  justify-content:left;
+  align-items: center;
+  padding: 5px 10px; 
+}
+
+.logo-container {
+    top:0;
+  width: 5%; 
+  height: 20%; 
+  border-radius: 60%;
+  overflow: hidden; 
+  margin-right: 20px;
+}
+
+.logo {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+}
+
+
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+   
+}
+
+.search-bar input[type="text"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    background-color: #45a049;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 20px 5px;
+    margin-left: 10px; 
+    cursor: pointer;
+
+}
+.search-bar img {
+    
+    width: 20%; 
+    height: 20%; 
+    display: block;
+    border-radius: 45%;
+
+}
+.Links a {
+        text-decoration: none; 
+        color:white;
+        font-weight: bold;
+        padding: 5px 10px;
+        margin-right: 40px; 
+        border: 2px solid #45a049;
+        border-radius: 5px;
+        transition: background-color 0.3s ease-in-out; 
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: medium;
+    }
+    .Links a:hover {
+        background-color: #45a049; 
+        color: #fff;
+    }
+    .Links li {
+        display: inline;
+        margin-right: 30px;
+    }
+
+</style>
+<script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+    const searchInput = document.getElementById("search-input");
+    const searchButton = document.getElementById("search-button");
+    searchButton.addEventListener("click", () => {
+        const searchQuery = searchInput.value.trim();
+        if (searchQuery === "") {
+            alert("Please enter a search query.");
+        } else {
+            alert("Performing search for: " + searchQuery);
+        }
+    });
+});
+
+</script>
+<body>
+    <nav>
+        <div class="logo-container">
+            <img src="nav_logo.jpg" alt="Your Logo" class="logo">
+       
+    </div>
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search...">
+        <button type="submit" id="search-button">
+            <img src="search_logo.png" alt="Search Icon"> 
+        </button>
+    </div>
+    <div class="Links">
+        <li><a href="home_1.html" target="contents">Home</a></li>
+        <li><a href="contacts.html" target="contents">Contacts</a></li>
+        <li><a href="feedback.html" target="contents">FeedBack</a></li>
+        <li><a href="review.html" target="contents">Reviews</a></li>
+    </div> 
+    </nav>
+</body>

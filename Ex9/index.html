@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-y: scroll;
+            margin-bottom: 0%;
+        }
+
+        .header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20%; 
+            background-color: rgb(132, 231, 132);
+            z-index: 1000; 
+        }
+
+        .menu-container {
+            position: absolute;
+            top: 20%; 
+            left: 0;
+            width: 25%;
+            bottom: 0;
+            height: 130%;
+            background-color: lightblue;
+        }
+
+        .content-container {
+            position: absolute;
+            top: 20%;
+            left: 25%;
+            width: 75%;
+            height: 130%;
+            background-color: lightgreen;
+            overflow-y: hidden;
+        }
+
+        .footer-container {
+            position: absolute;
+            z-index: 1000;
+            top:130%;
+            width:100%;
+            height: 55%; 
+            padding: -1px;;
+        }
+
+        iframe {
+            border: none;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header container -->
+    <div class="header-container">
+        <iframe src="top.html" name="header" height="100%" width="100%"></iframe>
+    </div>
+
+    <!-- Menu container -->
+    <div class="menu-container">
+        <iframe src="left.html" name="menu" width="100%" height="100%"></iframe>
+    </div>
+
+    <!-- Content container -->
+    <div class="content-container">
+        <iframe src="home_1.html" name="contents" width="100%" height="100%"></iframe>
+    </div>
+
+    <!-- Footer container -->
+    <div class="footer-container">
+        <iframe src="footer.html" name="footer" width="100%" height="100%"></iframe>
+    </div>
+</body>
+</html>
